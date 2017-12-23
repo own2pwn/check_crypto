@@ -3,23 +3,7 @@ import datetime
 import sys
 import pandas as pd
 
-def ret_exchange_list(exchange_list):
-    # nothing
-    valid_exchange_list = list()
-    for item in exchange_list:
-        print item
-        try:
-            data = live_price('XRP', ['USD'], item)
-            if 'Message' in data.keys() and "market does not exist" in data['Message']:
-                continue
-            else:
-                print data
-                valid_exchange_list.append(item)
-        except KeyError:
-            print KeyError
-            sys.exit(1)
 
-    return valid_exchange_list
 
 
 
@@ -63,10 +47,15 @@ def minute_price_historical(symbol, comparison_symbol, limit, aggregate, exchang
     if exchange:
         url += '&e={}'.format(exchange)
     page = requests.get(url)
-    data = page.json()['Data']
-    df = pd.DataFrame(data)
-    df['timestamp'] = [datetime.datetime.fromtimestamp(d) for d in df.time]
-    return df
+    if page.status_code != 200:
+        raise Exception
+    try:
+        data = page.json()['Data']
+        df = pd.DataFrame(data)
+        df['timestamp'] = [datetime.datetime.fromtimestamp(d) for d in df.time]
+        return df
+    except:
+        raise
 
 def coin_list():
     url = 'https://www.cryptocompare.com/api/data/coinlist/'

@@ -1,3 +1,11 @@
+
+COIN_LIST_FILE = 'coinlist.json'
+
+COIN_ATTRIBS = [
+    'CoinName',
+    'Id'
+]
+
 FULL_EXHANGE_LIST = ['Cryptsy', 'BTCChina', 'Bitstamp', 'BTER', 'OKCoin', 'Coinbase', 'Poloniex',
  'Cexio', 'BTCE', 'BitTrex', 'Kraken', 'Bitfinex', 'Yacuna', 'LocalBitcoins',
  'Yunbi', 'itBit', 'HitBTC', 'btcXchange', 'BTC38', 'Coinfloor', 'Huobi', 'CCCAGG',
@@ -17,3 +25,4 @@ WORK_ECHANGE_LIST = ['Cryptsy', 'Bitstamp', 'OKCoin', 'Coinbase', 'Poloniex', 'C
                      'CCEX', 'MonetaGo', 'Gatecoin', 'Gemini', 'CCEDK', 'Exmo', 'Yobit',
                      'BitBay', 'QuadrigaCX', 'BitSquare', 'TheRockTrading', 'Quoine',
                      'LiveCoin', 'WavesDEX', 'Lykke', 'Remitano', 'Coinroom', 'Abucoins']
+
